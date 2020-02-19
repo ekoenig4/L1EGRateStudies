@@ -23,12 +23,12 @@ process.MessageLogger.cerr.FwkReport = cms.untracked.PSet(
 )
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
-#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10) )
+# process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10) )
 
 process.source = cms.Source("PoolSource",
    #fileNames = cms.untracked.vstring(),
    # dasgoclient --query="dataset dataset=/*/*PhaseIIMTDTDRAutumn18DR*/FEVT"
-   #fileNames = cms.untracked.vstring('root://cms-xrd-global.cern.ch//store/mc/PhaseIIMTDTDRAutumn18DR/VBFHToTauTau_M125_14TeV_powheg_pythia8/FEVT/PU200_103X_upgrade2023_realistic_v2-v1/280000/EFC8271A-8026-6A43-AF18-4CB7609B3348.root'),
+   # fileNames = cms.untracked.vstring('root://cms-xrd-global.cern.ch//store/mc/PhaseIIMTDTDRAutumn18DR/VBFHToTauTau_M125_14TeV_powheg_pythia8/FEVT/PU200_103X_upgrade2023_realistic_v2-v1/280000/EFC8271A-8026-6A43-AF18-4CB7609B3348.root'),
    dropDescendantsOfDroppedBranches=cms.untracked.bool(False),
    inputCommands = cms.untracked.vstring(
                     "keep *",
@@ -124,8 +124,8 @@ process.Out = cms.OutputModule( "PoolOutputModule",
      outputCommands = cms.untracked.vstring(
                           "drop *",
                           "keep *_genParticles_*_*",
-                          #"keep *_L1EGammaClusterEmuProducer_*_*",
-                          #"keep *_L1TowerCalibrationProducer_*_*",
+                          "keep *_L1EGammaClusterEmuProducer_*_*",
+                          "keep *_L1TowerCalibrationProducer_*_*",
                           "keep *_L1CaloJetProducer_*_*",
                           "keep *_simCaloStage2Digis_MP_HLT",
                           "keep *_addPileupInfo_*_*",

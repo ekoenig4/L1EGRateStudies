@@ -27,12 +27,19 @@ process.source = cms.Source("PoolSource",
 )
 
 
-out_path = '/data/truggles/l1CaloJets_20190308_r2/'
-name = "QCD"
-name = "TTbar"
-# Load samples from external files here:
+name = "ggHTT"
+out_path = 'round2_output/%s/' % name
+import os
+if not os.path.isdir(out_path): os.mkdir(out_path)
+# # Load samples from external files here:
 from L1Trigger.L1EGRateStudies.loadRound2Files import getSampleFiles
 process.source.fileNames = getSampleFiles( name )
+output = 'output_round2_%s' % name
+
+# from sys import argv
+# inputfile = argv[2]
+# output = inputfile.split('/')[-1].replace('round1','round2')
+# process.source.fileNames = cms.untracked.vstring('file:%s'%inputfile)
 
 
 # All this stuff just runs the various EG algorithms that we are studying
@@ -100,7 +107,8 @@ process.panalyzer = cms.Path(process.analyzer)
 
 
 process.TFileService = cms.Service("TFileService", 
-    fileName = cms.string( out_path+"output_round2_"+name+"Mar14v1.root" ), 
+    fileName = cms.string( out_path+output+".root" ), 
+    # fileName = cms.string( "output_round2.root" ), 
     closeFileFast = cms.untracked.bool(True)
 )
 

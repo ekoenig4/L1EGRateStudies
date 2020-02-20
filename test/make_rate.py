@@ -9,8 +9,8 @@ if not os.path.exists( 'eff_and_rate_roots/' ) : os.makedirs( 'eff_and_rate_root
 ROOT.gROOT.SetBatch(True)
 ROOT.gStyle.SetOptStat(0)
 
-doTau = True
-#doTau = False
+# doTau = True
+doTau = False
 
 doEff = True
 #doEff = False
@@ -45,7 +45,8 @@ text = 'Jet' if not doTau else 'Tau'
     
 
 if doEff :
-    fName = 'output_round2_HiggsTauTauv1'
+    name = "ggHTT"
+    fName = 'output_round2_%s' % name
     date = '20190319'
     base = '/data/truggles/l1CaloJets_'+date+'_r2/'
     universalSaveDir = "/afs/cern.ch/user/t/truggles/www/Phase-II/efficiencies/"+date+"/"+fName+"/"
